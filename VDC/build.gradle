@@ -1,0 +1,25 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+plugins {
+    id 'java'
+    id 'application'
+}
+version '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+dependencies {
+    implementation group: 'net.bramp.ffmpeg', name: 'ffmpeg', version: '0.1'
+
+}
+mainClassName = 'Processor.Main'
+
+
+
+
+
