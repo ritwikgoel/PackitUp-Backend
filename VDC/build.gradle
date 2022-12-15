@@ -14,7 +14,8 @@ repositories {
     mavenCentral()
 }
 dependencies {
-    implementation group: 'net.bramp.ffmpeg', name: 'ffmpeg', version: '0.1'
+    implementation group: 'net.bramp.ffmpeg', name: 'ffmpeg', version: '0.7.0'
+
 }
 mainClassName = 'Processor.Main'
 
