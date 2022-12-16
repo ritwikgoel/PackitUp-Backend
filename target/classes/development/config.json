@@ -1,0 +1,6 @@
+{
+  "configs": {
+    "uri": "mongodb+srv://ritwikgoel:ritwikgoel@vdcluster.6pdyb0m.mongodb.net/test",
+    "port": "8945"
+  }
+}
