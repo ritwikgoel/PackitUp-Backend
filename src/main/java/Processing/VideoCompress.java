@@ -9,6 +9,7 @@ import java.io.IOException;
 
 public enum VideoCompress {
     INSTANCE;
+    //Send path here. Can send database path or File server. File server makes sense. Database will contain the address of the videos
     public void compress() throws IOException {
         FFmpeg ffmpeg = new FFmpeg("/opt/homebrew/bin/ffmpeg");
         FFprobe ffprobe = new FFprobe("/opt/homebrew/bin/ffprobe");//manual path
