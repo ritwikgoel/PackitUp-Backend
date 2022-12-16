@@ -1,2 +1,4 @@
-src/main/resources/development/config.json
-/src/main/resources/development/
+.idea/
+*.iml
+*.iws
+*.json
