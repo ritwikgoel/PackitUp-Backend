@@ -1,5 +1,7 @@
 package Database;
 
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 import io.vertx.core.json.Json;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -25,6 +27,8 @@ public class MongoConn {
             JSONObject obj = new JSONObject(jsonString);
             String uri = obj.getJSONObject("configs").getString("uri");
             System.out.println(uri);
+            MongoClientURI mongoClientURI= new MongoClientURI(uri);
+            MongoClient mongoClient= new MongoClient(mongoClientURI);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
