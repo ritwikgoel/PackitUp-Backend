@@ -2,10 +2,13 @@ package Database;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
-import io.vertx.core.json.Json;
-import org.json.JSONArray;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.internal.MongoDatabaseImpl;
+import org.bson.Document;
 import org.json.JSONObject;
 
+import javax.print.Doc;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -29,6 +32,13 @@ public class MongoConn {
             System.out.println(uri);
             MongoClientURI mongoClientURI= new MongoClientURI(uri);
             MongoClient mongoClient= new MongoClient(mongoClientURI);
+            MongoDatabase mongoDatabase= mongoClient.getDatabase("VDC");
+            MongoCollection mongoCollection=mongoDatabase.getCollection("masterData");
+            Document document= new Document("name","Ritwik");
+            document.append("age","21");
+            mongoCollection.insertOne(document);
+            System.out.println(mongoCollection);
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
