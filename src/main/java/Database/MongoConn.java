@@ -34,10 +34,10 @@ public class MongoConn {
             MongoClient mongoClient= new MongoClient(mongoClientURI);
             MongoDatabase mongoDatabase= mongoClient.getDatabase("VDC");
             MongoCollection mongoCollection=mongoDatabase.getCollection("masterData");
-            Document document= new Document("name","Ritwik");
-            document.append("age","21");
-            mongoCollection.insertOne(document);
-            System.out.println(mongoCollection);
+//            Document document= new Document("name","Ritwik");
+//            document.append("age","21");
+//            mongoCollection.insertOne(document);
+//            System.out.println(mongoCollection);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
