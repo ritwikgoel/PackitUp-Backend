@@ -14,13 +14,24 @@ public class Main extends AbstractVerticle {
 
     public static void main(String[] args) throws IOException {
         //BasicConfigurator.configure();
-        Vertx vertx = Vertx.vertx(new VertxOptions().setWorkerPoolSize(40));
-        VertxOptions vertxOptions = new VertxOptions();
-        int eventLoopSize = vertxOptions.getEventLoopPoolSize();
-        vertx.deployVerticle(HttpRouter.class.getName());
+//        Vertx vertx = Vertx.vertx(new VertxOptions().setWorkerPoolSize(40));
+//        VertxOptions vertxOptions = new VertxOptions();
+//        int eventLoopSize = vertxOptions.getEventLoopPoolSize();
+
+//        HttpRouter httpRouter= new HttpRouter();
+//        try {
+//            httpRouter.start();
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
+        Vertx vertx = Vertx.vertx();
+        vertx.deployVerticle(new HttpRouter());
+
+        //vertx.deployVerticle(HttpRouter.class.getName());
         //MongoConn mongoConn= new MongoConn();//Manually start the database to run
         //mongoConn.makeConnection();
         //VideoCompress.INSTANCE.compress();
+
 
     }
 }

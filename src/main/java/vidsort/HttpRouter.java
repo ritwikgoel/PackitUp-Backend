@@ -6,23 +6,19 @@ import io.vertx.core.http.HttpServerResponse;
 import io.vertx.ext.web.Router;
 
 public class HttpRouter extends AbstractVerticle {
-
-    public void start() throws Exception {
-        super.start();
+    @Override
+    public void start() {
         HttpServer server = vertx.createHttpServer();
-        Router router = Router.router(vertx);
 
-        router.route().handler(ctx -> {
-            // This handler will be called for every request
-            HttpServerResponse response = ctx.response();
-            ((HttpServerResponse) response).putHeader("content-type", "text/plain");
+        server.requestHandler(request -> {
+            // This handler will be called for each request
+            HttpServerResponse response = request.response();
+            response.putHeader("content-type", "text/plain");
 
             // Write to the response and end it
-            response.end("Hello World from Vert.x-Web!");
+            response.end("Hello World!");
         });
 
-        server.requestHandler(router).listen(8080);
-
+        server.listen(8080);
     }
-
 }
