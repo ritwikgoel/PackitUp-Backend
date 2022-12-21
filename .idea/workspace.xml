@@ -5,8 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eb821a03-49e0-499b-8db7-dec4f3c4580c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/VDC.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/VDC.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_9_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_9_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_vertx_vertx_core_3_5_3.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vidsort/HttpRouter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vidsort/HttpRouter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/vidsort/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vidsort/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vidsort/HttpRouter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vidsort/HttpRouter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/vidsort/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vidsort/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,8 +65,17 @@
       <recent name="vidsort" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="VDC" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.VDC">
+    <configuration name="VDC" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="vidsort.Main" />
+      <module name="VDC" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VDC [deploy]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
         <option name="myRunnerSettings" />
@@ -68,7 +85,9 @@
               <set />
             </option>
             <option name="goals">
-              <list />
+              <list>
+                <option value="deploy" />
+              </list>
             </option>
             <option name="pomFileName" />
             <option name="profilesMap">
@@ -81,6 +100,10 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Application.VDC" />
+      <item itemvalue="Maven.VDC [deploy]" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

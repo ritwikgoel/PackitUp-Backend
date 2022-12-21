@@ -4,6 +4,7 @@ import Database.MongoConn;
 import Processing.VideoCompress;
 
 import io.vertx.core.AbstractVerticle;
+import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Vertx;
 import io.vertx.core.VertxOptions;
 import org.apache.log4j.BasicConfigurator;
@@ -11,27 +12,21 @@ import org.apache.log4j.BasicConfigurator;
 import java.io.IOException;
 
 public class Main extends AbstractVerticle {
-
-    public static void main(String[] args) throws IOException {
-        //BasicConfigurator.configure();
-//        Vertx vertx = Vertx.vertx(new VertxOptions().setWorkerPoolSize(40));
-//        VertxOptions vertxOptions = new VertxOptions();
-//        int eventLoopSize = vertxOptions.getEventLoopPoolSize();
-
-//        HttpRouter httpRouter= new HttpRouter();
+    public static void main(String[] args) {
+//        BasicConfigurator.configure();
+        VertxOptions vertxOptions = new VertxOptions();
+//        MongoConn mongoConn= new MongoConn();//Manually start the database to run
+//        mongoConn.makeConnection();
 //        try {
-//            httpRouter.start();
-//        } catch (Exception e) {
+//            VideoCompress.INSTANCE.compress();
+//        } catch (IOException e) {
 //            throw new RuntimeException(e);
 //        }
-        Vertx vertx = Vertx.vertx();
-        vertx.deployVerticle(new HttpRouter());
+        int eventLoopSize = vertxOptions.getEventLoopPoolSize();
+        Vertx vertx = Vertx.vertx(new VertxOptions().setWorkerPoolSize(40));
 
-        //vertx.deployVerticle(HttpRouter.class.getName());
-        //MongoConn mongoConn= new MongoConn();//Manually start the database to run
-        //mongoConn.makeConnection();
-        //VideoCompress.INSTANCE.compress();
-
-
+        vertx.deployVerticle(HttpRouter.class.getName(),new DeploymentOptions().setWorkerPoolSize(20).setInstances(eventLoopSize));
     }
+
+
 }
