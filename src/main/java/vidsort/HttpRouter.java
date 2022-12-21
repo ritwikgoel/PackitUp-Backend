@@ -1,12 +1,6 @@
 package vidsort;
 
 import io.vertx.core.AbstractVerticle;
-import io.vertx.core.Handler;
-import io.vertx.core.Vertx;
-import io.vertx.core.VertxOptions;
-import io.vertx.core.http.HttpMethod;
-import io.vertx.core.http.HttpServer;
-import io.vertx.core.http.HttpServerRequest;
 import io.vertx.core.http.HttpServerResponse;
 import io.vertx.ext.web.Router;
 
@@ -25,7 +19,9 @@ public class HttpRouter extends AbstractVerticle {
             // Write to the response and end it
             response.end("Hello World from Vert.njknjx-Web!");
         });
-
+        router.get("/health").handler(event -> {
+            event.response().end("Ok");
+        });
         vertx.createHttpServer().requestHandler(router::accept).listen(8080);
 
     }

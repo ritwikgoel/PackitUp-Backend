@@ -24,7 +24,6 @@ public class Main extends AbstractVerticle {
 //        }
         int eventLoopSize = vertxOptions.getEventLoopPoolSize();
         Vertx vertx = Vertx.vertx(new VertxOptions().setWorkerPoolSize(40));
-
         vertx.deployVerticle(HttpRouter.class.getName(),new DeploymentOptions().setWorkerPoolSize(20).setInstances(eventLoopSize));
     }
 
