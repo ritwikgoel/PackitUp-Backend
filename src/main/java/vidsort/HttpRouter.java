@@ -9,15 +9,8 @@ public class HttpRouter extends AbstractVerticle {
     public void start() {
 
         Router router = Router.router(vertx);
-
-        router.route().handler(ctx -> {
-
-            // This handler will be called for every request
-            HttpServerResponse response = ctx.response();
-            response.putHeader("content-type", "text/plain");
-
-            // Write to the response and end it
-            response.end("Hello World from Vert.njknjx-Web!");
+        router.get("/").handler(event -> {
+            event.response().setChunked(true).end("Home page");
         });
         router.get("/health").handler(event -> {
             event.response().end("Ok");
