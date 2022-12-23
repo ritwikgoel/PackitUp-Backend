@@ -20,8 +20,16 @@ public class HttpRouter extends AbstractVerticle {
             System.out.println(response);
             event.response().end("Ok");
         });
-        router.mountSubRouter("/processing", VideoCompress.INSTANCE.router());
 
+        router.get("/processing").handler(event->{
+            HttpServerResponse response= event.response();
+            try {
+                VideoCompress.INSTANCE.compress();
+                event.response().end("Video compressing done");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
         //Handling file uploads- PART OF VERTX
         //You can use the context data in the
         //RoutingContext
