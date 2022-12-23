@@ -1,8 +1,11 @@
 package vidsort;
 
+import Processing.VideoCompress;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.http.HttpServerResponse;
 import io.vertx.ext.web.Router;
+
+import java.io.IOException;
 
 public class HttpRouter extends AbstractVerticle {
     @Override
@@ -13,8 +16,57 @@ public class HttpRouter extends AbstractVerticle {
             event.response().setChunked(true).end("Home page");
         });
         router.get("/health").handler(event -> {
+            HttpServerResponse response = event.response();
+            System.out.println(response);
             event.response().end("Ok");
         });
+        router.mountSubRouter("/processing", VideoCompress.INSTANCE.router());
+
+        //Handling file uploads- PART OF VERTX
+        //You can use the context data in the
+        //RoutingContext
+        // to maintain any data that you want to share between handlers for the lifetime of the request.
+        /*
+        * Blocking Handler:
+        * router.post("/some/endpoint").handler(ctx -> {
+  ctx.request().setExpectMultipart(true);
+  ctx.next();
+}).blockingHandler(ctx -> {
+  // ... Do some blocking operation
+});
+        * */
+
+        /*
+        * Path Parameters:
+        * router
+  .route(HttpMethod.POST, "/catalogue/products/:productType/:productID/")
+  .handler(ctx -> {
+
+    String productType = ctx.pathParam("productType");
+    String productID = ctx.pathParam("productID");
+
+    // Do something with them...
+  });
+        *
+        * */
+
+        /*
+        Can do POST and GET requests
+        * router.route(HttpMethod.PUT, "myapi/orders")
+  .consumes("application/json")
+  .produces("application/json")
+  .handler(ctx -> {
+
+    // This would be match for any PUT method to paths starting
+    // with "myapi/orders" with a content-type of "application/json"
+    // and an accept header matching "application/json"
+
+  });
+
+        *
+        * */
+
+
         vertx.createHttpServer().requestHandler(router::accept).listen(8080);
 
     }
