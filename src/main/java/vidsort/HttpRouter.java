@@ -1,16 +1,11 @@
 package vidsort;
-
 import Processing.LZMA2Compress;
 import Processing.LZMA2Decompress;
 import Processing.VideoCompress;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.http.HttpServerResponse;
-import io.vertx.ext.web.FileUpload;
 import io.vertx.ext.web.Router;
-
 import java.io.IOException;
-import java.util.Set;
-
 public class HttpRouter extends AbstractVerticle {
     @Override
     public void start() {
@@ -33,7 +28,6 @@ public class HttpRouter extends AbstractVerticle {
                 throw new RuntimeException(e);
             }
         });
-
         router.post("/upload/:path").handler(event->{
             String path = event.pathParam("path");
             System.out.println(path);
@@ -49,7 +43,7 @@ public class HttpRouter extends AbstractVerticle {
             event.response().end("Uploading with the link");
         });
         vertx.createHttpServer().requestHandler(router::accept).listen(8080);
-        //Handling file uploads- PART OF VERTX
+        //Handling file uploads - PART OF VERTX
         //You can use the context data in the
         //RoutingContext
         // to maintain any data that you want to share between handlers for the lifetime of the request.
@@ -83,13 +77,10 @@ public class HttpRouter extends AbstractVerticle {
   .consumes("application/json")
   .produces("application/json")
   .handler(ctx -> {
-
     // This would be match for any PUT method to paths starting
     // with "myapi/orders" with a content-type of "application/json"
     // and an accept header matching "application/json"
-
   });
-
         *
         * */
     }
