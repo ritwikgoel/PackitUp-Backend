@@ -39,14 +39,19 @@ public enum VideoCompress {
     public void decider(String path){
         if(path.substring(path.length()-4).contains("mp3")){
             //mp3 file over here
+            System.out.println("This is a mp3");
         }else if(path.substring(path.length()-4).contains("mp4")){
             //mp4
+            System.out.println("This is a mp4");
         }else if(path.substring(path.length()-4).contains("pdf")){
             //pdf
+            System.out.println("This is a pdf");
         }else if(path.substring(path.length()-4).contains("jpg")){
             //jpg
+            System.out.println("This is a jpg");
         }else if(path.substring(path.length()-4).contains("jpeg")){
             //jpeg
+            System.out.println("This is a jpeg");
         }
     }
 

@@ -3,9 +3,11 @@ package vidsort;
 import Processing.VideoCompress;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.http.HttpServerResponse;
+import io.vertx.ext.web.FileUpload;
 import io.vertx.ext.web.Router;
 
 import java.io.IOException;
+import java.util.Set;
 
 public class HttpRouter extends AbstractVerticle {
     @Override
@@ -33,7 +35,6 @@ public class HttpRouter extends AbstractVerticle {
         router.post("/upload/:path").handler(event->{
             String path = event.pathParam("path");
             System.out.println(path);
-
             HttpServerResponse response= event.response();
             VideoCompress.INSTANCE.decider("this.mp3");
             event.response().end("Uploading with the link");
