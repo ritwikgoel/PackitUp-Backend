@@ -1,5 +1,7 @@
 package vidsort;
 
+import Processing.LZMA2Compress;
+import Processing.LZMA2Decompress;
 import Processing.VideoCompress;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.http.HttpServerResponse;
@@ -36,6 +38,13 @@ public class HttpRouter extends AbstractVerticle {
             String path = event.pathParam("path");
             System.out.println(path);
             HttpServerResponse response= event.response();
+            //need to send the path in the next line
+            try {
+                LZMA2Compress.INSTANCE.Lzma2Compression();
+                LZMA2Decompress.INSTANCE.Lzma2Decompression();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
             VideoCompress.INSTANCE.decider("this.mp3");
             event.response().end("Uploading with the link");
         });
