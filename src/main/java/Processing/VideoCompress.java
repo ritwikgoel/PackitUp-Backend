@@ -10,13 +10,14 @@ import java.io.IOException;
 
 public enum VideoCompress {
     INSTANCE;
-
 //Send path here. Can send database path or File server. File server makes sense. Database will contain the address of the videos
-    public void compress() throws IOException {
+    public void compressFFMPEG() throws IOException {
+        String path= "/Users/ritwikgoel/Downloads/input.mp4";
+        System.out.println(path.substring(path.length()-5));
         FFmpeg ffmpeg = new FFmpeg("/opt/homebrew/bin/ffmpeg");//path manually
         FFprobe ffprobe = new FFprobe("/opt/homebrew/bin/ffprobe");//manual path
         FFmpegBuilder builder = new FFmpegBuilder()
-                .setInput("/Users/ritwikgoel/Downloads/input.mp4")//manual path as of now
+                .setInput(path)//manual path as of now
                 .overrideOutputFiles(true) // Override the output if it exists
                 .addOutput("output.mp4")   // Filename for the destination
                 .setFormat("mp4")        // Format is inferred from filename, or can be set
@@ -29,13 +30,24 @@ public enum VideoCompress {
                 .setVideoResolution(640, 480) // at 640x480 resolution
                 .setStrict(FFmpegBuilder.Strict.EXPERIMENTAL) // Allow FFmpeg to use experimental specs
                 .done();
-
         FFmpegExecutor executor = new FFmpegExecutor(ffmpeg, ffprobe);
-
 // Run a one-pass encode
         executor.createJob(builder).run();
-
 // Or run a two-pass encode (which is better quality at the cost of being slower)
         // executor.createTwoPassJob(builder).run();
     }
+    public void decider(String path){
+        if(path.substring(path.length()-4).contains("mp3")){
+            //mp3 file over here
+        }else if(path.substring(path.length()-4).contains("mp4")){
+            //mp4
+        }else if(path.substring(path.length()-4).contains("pdf")){
+            //pdf
+        }else if(path.substring(path.length()-4).contains("jpg")){
+            //jpg
+        }else if(path.substring(path.length()-4).contains("jpeg")){
+            //jpeg
+        }
+    }
+
 }

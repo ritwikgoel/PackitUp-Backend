@@ -10,7 +10,6 @@ import java.io.IOException;
 public class HttpRouter extends AbstractVerticle {
     @Override
     public void start() {
-
         Router router = Router.router(vertx);
         router.get("/").handler(event -> {
             event.response().setChunked(true).end("Home page");
@@ -20,16 +19,26 @@ public class HttpRouter extends AbstractVerticle {
             System.out.println(response);
             event.response().end("Ok");
         });
-
+        //This processing is for FFMPEG compression
         router.get("/processing").handler(event->{
             HttpServerResponse response= event.response();
             try {
-                VideoCompress.INSTANCE.compress();
+                VideoCompress.INSTANCE.compressFFMPEG();
                 event.response().end("Video compressing done");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         });
+
+        router.post("/upload/:path").handler(event->{
+            String path = event.pathParam("path");
+            System.out.println(path);
+
+            HttpServerResponse response= event.response();
+            VideoCompress.INSTANCE.decider("this.mp3");
+            event.response().end("Uploading with the link");
+        });
+        vertx.createHttpServer().requestHandler(router::accept).listen(8080);
         //Handling file uploads- PART OF VERTX
         //You can use the context data in the
         //RoutingContext
@@ -73,9 +82,5 @@ public class HttpRouter extends AbstractVerticle {
 
         *
         * */
-
-
-        vertx.createHttpServer().requestHandler(router::accept).listen(8080);
-
     }
 }
