@@ -14,37 +14,39 @@ public class HuffmanTextFles {
         public static HashMap<Character, String> charToCode;
         public static HashMap<String, Character> codeToChar;
 
+    //In this add the mongo stuff to store the location of the file in the file system
+        public void HuffmanTextFlesRunner() throws FileNotFoundException {
+                    // Read all the contents of the file
+            String text = new Scanner(new File("text.txt")).useDelimiter("\\A").next();
+            // Count the frequency of all the characters
+            HashMap<Character, Integer> dict = new HashMap<Character, Integer>();
+            for(int i = 0; i < text.length(); i++) {
+                char a = text.charAt(i);
+                if(dict.containsKey(a))
+                    dict.put(a, dict.get(a)+1);
+                else
+                    dict.put(a, 1);
+            }
+
+            // Create a forest (group of trees) by adding all the nodes to a priority queue
+            q = new PriorityQueue<Node>(100, new FrequencyComparator());
+            int n = 0;
+            for(Character c : dict.keySet()) {
+                q.add(new Node(c, dict.get(c)));
+                n++;
+            }
+            Node root = huffmain(n);
+            buildTable(root);
+
+            String compressed = compress(text);
+            saveToFile(compressed);
+
+            String decompressed = decompress(compressed);
+            writeToFile(decompressed);
+
+    }
+
 //Main function
-        //        @SuppressWarnings("resource")
-//        public static void main(String[] args) throws FileNotFoundException {
-//            // Read all the contents of the file
-//            String text = new Scanner(new File("text.txt")).useDelimiter("\\A").next();
-//            // Count the frequency of all the characters
-//            HashMap<Character, Integer> dict = new HashMap<Character, Integer>();
-//            for(int i = 0; i < text.length(); i++) {
-//                char a = text.charAt(i);
-//                if(dict.containsKey(a))
-//                    dict.put(a, dict.get(a)+1);
-//                else
-//                    dict.put(a, 1);
-//            }
-//
-//            // Create a forest (group of trees) by adding all the nodes to a priority queue
-//            q = new PriorityQueue<Node>(100, new FrequencyComparator());
-//            int n = 0;
-//            for(Character c : dict.keySet()) {
-//                q.add(new Node(c, dict.get(c)));
-//                n++;
-//            }
-//            Node root = huffmain(n);
-//            buildTable(root);
-//
-//            String compressed = compress(text);
-//            saveToFile(compressed);
-//
-//            String decompressed = decompress(compressed);
-//            writeToFile(decompressed);
-//        }
 
         // This method builds the tree based on the frequency of every characters
         public static Node huffmain(int n) {
