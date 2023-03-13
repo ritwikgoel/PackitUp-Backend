@@ -1,8 +1,5 @@
 package vidsort;
-import Processing.LZMA2Compress;
-import Processing.LZMA2Decompress;
-import Processing.SnappyBzip2;
-import Processing.VideoCompress;
+import Processing.*;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.http.HttpServerResponse;
 import io.vertx.ext.web.Router;
@@ -36,8 +33,10 @@ public class HttpRouter extends AbstractVerticle {
             //need to send the path in the next line
             try {
                 LZMA2Compress.INSTANCE.Lzma2Compression();
+                //VideoCompress.INSTANCE.compressFFMPEG();
                 LZMA2Decompress.INSTANCE.Lzma2Decompression();
                 SnappyBzip2.INSTANCE.Compress();
+                HuffmanTextFles.INSTANCE.HuffmanTextFlesRunner();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

@@ -17,7 +17,8 @@ public enum HuffmanTextFles {
     //In this add the mongo stuff to store the location of the file in the file system
         public void HuffmanTextFlesRunner() throws FileNotFoundException {
                     // Read all the contents of the file
-            String text = new Scanner(new File("text.txt")).useDelimiter("\\A").next();
+            String text = new Scanner(new File("/Users/ritwikgoel/Downloads/input.txt")).useDelimiter("\\A").next();
+            System.out.println(text);
             // Count the frequency of all the characters
             HashMap<Character, Integer> dict = new HashMap<Character, Integer>();
             for(int i = 0; i < text.length(); i++) {
@@ -41,8 +42,8 @@ public enum HuffmanTextFles {
             String compressed = compress(text);
             saveToFile(compressed);
 
-            String decompressed = decompress(compressed);
-            writeToFile(decompressed);
+            //String decompressed = decompress(compressed);
+            //writeToFile(decompressed);
 
     }
 
@@ -106,7 +107,7 @@ public enum HuffmanTextFles {
             return result;
         }
         public static void saveToFile(String l) throws FileNotFoundException {
-            PrintWriter oFile = new PrintWriter("text.txt.huf");
+            PrintWriter oFile = new PrintWriter("textfinalhuffman.txt");
             oFile.print(charToCode.size());
             for(char s : charToCode.keySet())
                 oFile.println("{" +s + ":" + charToCode.get(s)+ "}");
@@ -115,7 +116,7 @@ public enum HuffmanTextFles {
         }
 
         public static void writeToFile(String i) throws FileNotFoundException {
-            PrintWriter iFile = new PrintWriter("note.txt");
+            PrintWriter iFile = new PrintWriter("huffmannfinal.txt");
             iFile.print(codeToChar.size());
             for (String s : codeToChar.keySet())
                 iFile.println("{" +s + ":" + codeToChar.get(s)+ "}");

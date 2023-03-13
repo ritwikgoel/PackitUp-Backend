@@ -19,7 +19,7 @@ public enum VideoCompress {
         FFmpegBuilder builder = new FFmpegBuilder()
                 .setInput(path)//manual path as of now
                 .overrideOutputFiles(true) // Override the output if it exists
-                .addOutput("output.mp4")   // Filename for the destination
+                .addOutput("outputFFMEG.mp4")   // Filename for the destination
                 .setFormat("mp4")        // Format is inferred from filename, or can be set
                 .disableSubtitle()       // No subtiles
                 .setAudioChannels(1)         // Mono audio
