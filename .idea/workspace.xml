@@ -7,16 +7,14 @@
     <list default="true" id="eb821a03-49e0-499b-8db7-dec4f3c4580c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/finalforLZMADecompress.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/huffmannfinal.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputFFMEG.mp4" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/outputforlzma.xz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Processing/HuffmanTextFles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Processing/HuffmanTextFles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Processing/LZMA2Compress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Processing/LZMA2Compress.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Processing/SnappyBzip2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Processing/SnappyBzip2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Processing/VideoCompress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Processing/VideoCompress.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Processing/LZMA2Compress.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/vidsort/HttpRouter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vidsort/HttpRouter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Processing/SnappyBzip2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Processing/SnappyBzip2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Processing/VideoCompress.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Processing/VideoCompress.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Processing/LZMA2Compress.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Processing/LZMA2Compress.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/vidsort/HttpRouter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vidsort/HttpRouter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/textfinalhuffman.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
