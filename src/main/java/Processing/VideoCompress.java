@@ -12,7 +12,7 @@ public enum VideoCompress {
     INSTANCE;
 //Send path here. Can send database path or File server. File server makes sense. Database will contain the address of the videos
     public void compressFFMPEG() throws IOException {
-        String path= "/Users/ritwikgoel/Downloads/input.mp4";
+        String path= "/Users/ritwikgoel/Downloads/outputs/input.mp4";
         System.out.println(path.substring(path.length()-5));
         FFmpeg ffmpeg = new FFmpeg("/opt/homebrew/bin/ffmpeg");//path manually
         FFprobe ffprobe = new FFprobe("/opt/homebrew/bin/ffprobe");//manual path

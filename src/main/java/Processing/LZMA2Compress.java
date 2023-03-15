@@ -16,7 +16,7 @@ public enum LZMA2Compress {
 //The guys that invented the XZ format build a pure java implementation of the XZ archive compression / extraction algorithms
     public void Lzma2Compression() throws IOException {
         //        java -jar build/jar/XZEncDemo.jar < foo.txt > foo.txt.xz
-        FileInputStream inFile = new FileInputStream("/Users/ritwikgoel/Downloads/outputs/outputFFMEG.mp4");
+        FileInputStream inFile = new FileInputStream("/Users/ritwikgoel/Downloads/outputs/input.mp4");
         FileOutputStream outfile = new FileOutputStream("outputforlzma.xz");
 
         LZMA2Options options = new LZMA2Options();
