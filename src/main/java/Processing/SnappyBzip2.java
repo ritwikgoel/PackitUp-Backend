@@ -1,7 +1,5 @@
 package Processing;
-
 import org.xerial.snappy.Snappy;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -27,7 +25,7 @@ public enum SnappyBzip2
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
-        String input = "Hello snappy-java! Snappy-java is a JNI-based wrapper of "
+        String input = "Hello! Made by Ritwik, Ananya and parth Snappy-java is a JNI-based wrapper of "
                 + "Snappy, a fast compresser/decompresser.";
         byte[] compressed = Snappy.compress(data.getBytes("UTF-8"));
         File outputFile = new File("/Users/ritwikgoel/Downloads/output.txt");

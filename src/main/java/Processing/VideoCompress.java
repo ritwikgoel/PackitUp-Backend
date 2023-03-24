@@ -11,30 +11,31 @@ import java.io.IOException;
 public enum VideoCompress {
     INSTANCE;
 //Send path here. Can send database path or File server. File server makes sense. Database will contain the address of the videos
-    public void compressFFMPEG() throws IOException {
-        String path= "/Users/ritwikgoel/Downloads/outputs/input.mp4";
-        System.out.println(path.substring(path.length()-5));
+    public void compressFFMPEG(String videoinput, String id) throws IOException {
+        String inputfile="input.mp4";
+        String path= "/Users/ritwikgoel/Downloads/outputs/"+videoinput;
+        System.out.println(path);
+        //System.out.println(path.substring(path.length()-5));
         FFmpeg ffmpeg = new FFmpeg("/opt/homebrew/bin/ffmpeg");//path manually
         FFprobe ffprobe = new FFprobe("/opt/homebrew/bin/ffprobe");//manual path
+        //Changing the file name in accordance with input name + ID of the USER
+        String outputName="/Users/ritwikgoel/Documents/Capstone/FileSystem/"+inputfile+"_"+"1"+".mp4";//Add the ID name
         FFmpegBuilder builder = new FFmpegBuilder()
-                .setInput(path)//manual path as of now
-                .overrideOutputFiles(true) // Override the output if it exists
-                .addOutput("outputFFMEG.mp4")   // Filename for the destination
-                .setFormat("mp4")        // Format is inferred from filename, or can be set
-                .disableSubtitle()       // No subtiles
-                .setAudioChannels(1)         // Mono audio
-                .setAudioCodec("aac")        // using the aac codec
-                .setAudioSampleRate(48_000)  // at 48KHz
-                .setVideoCodec("libx264")     // Video using x264
-                .setVideoFrameRate(24, 1)     // at 24 frames per second
-                .setVideoResolution(640, 480) // at 640x480 resolution
-                .setStrict(FFmpegBuilder.Strict.EXPERIMENTAL) // Allow FFmpeg to use experimental specs
+                .setInput(path)
+                .overrideOutputFiles(true)
+                .addOutput(outputName)
+                .setFormat("mp4")
+                .disableSubtitle()
+                .setAudioChannels(1)
+                .setAudioCodec("aac")
+                .setAudioSampleRate(48_000)
+                .setVideoCodec("libx264")
+                .setVideoFrameRate(24, 1)
+                .setVideoResolution(640, 480)
+                .setStrict(FFmpegBuilder.Strict.EXPERIMENTAL)
                 .done();
         FFmpegExecutor executor = new FFmpegExecutor(ffmpeg, ffprobe);
-// Run a one-pass encode
         executor.createJob(builder).run();
-// Or run a two-pass encode (which is better quality at the cost of being slower)
-        // executor.createTwoPassJob(builder).run();
     }
     public void decider(String path){
         if(path.substring(path.length()-4).contains("mp3")){

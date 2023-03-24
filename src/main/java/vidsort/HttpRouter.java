@@ -8,19 +8,19 @@ public class HttpRouter extends AbstractVerticle {
     @Override
     public void start() {
         Router router = Router.router(vertx);
-        router.get("/").handler(event -> {
-            event.response().setChunked(true).end("Home page");
-        });
         router.get("/health").handler(event -> {
             HttpServerResponse response = event.response();
             System.out.println(response);
             event.response().end("Ok");
         });
         //This processing is for FFMPEG compression
-        router.get("/processing").handler(event->{
+        //Needs to be post to get the values here
+        router.post("/ffmpeg/:inputfilename/:id").handler(event->{
+            String inputfilename = event.pathParam("inputfilename");
+            String id = event.pathParam("id");
             HttpServerResponse response= event.response();
             try {
-                VideoCompress.INSTANCE.compressFFMPEG();
+                VideoCompress.INSTANCE.compressFFMPEG(inputfilename,id); //Sending the input of the file; Can also send the ID here only
                 event.response().end("Video compressing done");
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -33,7 +33,7 @@ public class HttpRouter extends AbstractVerticle {
             //need to send the path in the next line
             try {
                 LZMA2Compress.INSTANCE.Lzma2Compression();
-                VideoCompress.INSTANCE.compressFFMPEG();
+                //VideoCompress.INSTANCE.compressFFMPEG("input.mp4");
                 LZMA2Decompress.INSTANCE.Lzma2Decompression();
                 SnappyBzip2.INSTANCE.Compress();
                 HuffmanTextFles.INSTANCE.HuffmanTextFlesRunner();
