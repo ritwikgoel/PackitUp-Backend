@@ -15,11 +15,10 @@ public enum VideoCompress {
         String inputfile="input.mp4";
         String path= "/Users/ritwikgoel/Downloads/outputs/"+videoinput;
         System.out.println(path);
-        //System.out.println(path.substring(path.length()-5));
         FFmpeg ffmpeg = new FFmpeg("/opt/homebrew/bin/ffmpeg");//path manually
         FFprobe ffprobe = new FFprobe("/opt/homebrew/bin/ffprobe");//manual path
         //Changing the file name in accordance with input name + ID of the USER
-        String outputName="/Users/ritwikgoel/Documents/Capstone/FileSystem/"+inputfile+"_"+"1"+".mp4";//Add the ID name
+        String outputName="/Users/ritwikgoel/Documents/Capstone/FileSystem/"+"ffmpeg_"+inputfile+"_"+"1"+".mp4";//Add the ID name
         FFmpegBuilder builder = new FFmpegBuilder()
                 .setInput(path)
                 .overrideOutputFiles(true)
