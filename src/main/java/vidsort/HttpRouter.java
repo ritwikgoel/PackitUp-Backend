@@ -43,14 +43,24 @@ public class HttpRouter extends AbstractVerticle {
 
         //Post request for
 
-        router.post("/upload/").handler(event->{
+        router.post("/lz77/:inputfilename").handler(event->{
+            //This is working
+            String inputfilename = event.pathParam("inputfilename");
             HttpServerResponse response= event.response();
             try {
-                SnappyBzip2.INSTANCE.Compress();
-                //HuffmanTextFles.INSTANCE.HuffmanTextFlesRunner();
+                SnappyBzip2.INSTANCE.Compress(inputfilename);
+                event.response().end("LZ77 File compressing done");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+        });
+
+
+
+        router.post("/upload/").handler(event->{
+            HttpServerResponse response= event.response();
+            //SnappyBzip2.INSTANCE.Compress();
+            //HuffmanTextFles.INSTANCE.HuffmanTextFlesRunner();
             //VideoCompress.INSTANCE.decider("this.mp3");
             event.response().end("Uploading with the link");
         });

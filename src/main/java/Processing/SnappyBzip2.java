@@ -11,12 +11,13 @@ public enum SnappyBzip2
 {
     INSTANCE;
 
-    public void Compress() throws IOException {
+    public void Compress(String inputtext) throws IOException {
+        String path= "/Users/ritwikgoel/Downloads/"+inputtext;
         String data = null;
         String finalData = "";
         byte[] compressed = new byte[0];
         try {
-            File myObj = new File("/Users/ritwikgoel/Desktop/input.txt");
+            File myObj = new File(path);
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
                 data = myReader.nextLine();
@@ -27,16 +28,19 @@ public enum SnappyBzip2
             myReader.close();
             System.out.println(finalData); //working
             compressed = Snappy.compress(finalData.getBytes("UTF-8"));
-            File outputFile = new File("/Users/ritwikgoel/Desktop/output.txt");
+            String outputName="/Users/ritwikgoel/Documents/Capstone/FileSystem/"+"LZ77_"+inputtext+"_"+".txt";//Add the ID name
+            File outputFile = new File(outputName);
+
             Files.write(outputFile.toPath(), compressed);
 
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
-        byte[] uncompressed = Snappy.uncompress(compressed);
-        String result = new String(uncompressed, "UTF-8");
-        System.out.println("This is a SnappyBzip2::");
-        System.out.println(result);
+        //THis is for uncompressing the data
+//        byte[] uncompressed = Snappy.uncompress(compressed);
+//        String result = new String(uncompressed, "UTF-8");
+//        System.out.println("This is a SnappyBzip2::");
+//        System.out.println(result);
     }
 }
