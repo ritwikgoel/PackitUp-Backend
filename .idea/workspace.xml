@@ -6,17 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="eb821a03-49e0-499b-8db7-dec4f3c4580c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finalforLZMADecompress.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/outputFF88MEG.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/outputFFMEG.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/outputforlzma.xz" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Processing/LZMA2Compress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Processing/LZMA2Compress.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Processing/LZMA2Decompress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Processing/LZMA2Decompress.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Processing/VideoCompress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Processing/VideoCompress.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/vidsort/HttpRouter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vidsort/HttpRouter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Processing/LZMA2Compress.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Processing/LZMA2Compress.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Processing/LZMA2Decompress.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Processing/LZMA2Decompress.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Processing/VideoCompress.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Processing/VideoCompress.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/vidsort/HttpRouter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vidsort/HttpRouter.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

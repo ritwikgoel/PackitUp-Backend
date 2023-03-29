@@ -26,12 +26,12 @@ public class HttpRouter extends AbstractVerticle {
             }
         });
         //localhost:8080/lzma/input.mp4/1
-        router.post("/lzma/:inputfilename/:id").handler(event->{
+        router.post("/lzma/:inputfilename").handler(event->{
+            //This is working
             String inputfilename = event.pathParam("inputfilename");
-            String id = event.pathParam("id");
             HttpServerResponse response= event.response();
             try {
-                LZMA2Compress.INSTANCE.Lzma2Compression(inputfilename,id);
+                LZMA2Compress.INSTANCE.Lzma2Compression(inputfilename);
                 event.response().end("LZMA File compressing done");
             } catch (IOException e) {
                 throw new RuntimeException(e);

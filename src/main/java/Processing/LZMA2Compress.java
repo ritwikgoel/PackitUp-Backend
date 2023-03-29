@@ -14,9 +14,10 @@ public enum LZMA2Compress {
 //XZ is a file format based on LZMA2 (an improved version of LZMA)
 //
 //The guys that invented the XZ format build a pure java implementation of the XZ archive compression / extraction algorithms
-    public void Lzma2Compression(String videoinput, String id) throws IOException {
-        String path= "/Users/ritwikgoel/Downloads/outputs/"+videoinput;
-        String outputName="/Users/ritwikgoel/Documents/Capstone/FileSystem/"+"LZMA_"+videoinput+"_"+"1"+".xz";//Add the ID name
+    public void Lzma2Compression(String videoinput) throws IOException {
+        String path= "/Users/ritwikgoel/Downloads/"+videoinput;
+        System.out.println(path );
+        String outputName="/Users/ritwikgoel/Documents/Capstone/FileSystem/"+"LZMA_"+videoinput+"_"+".xz";//Add the ID name
         FileInputStream inFile = new FileInputStream(path);
         FileOutputStream outfile = new FileOutputStream(outputName);
         LZMA2Options options = new LZMA2Options();
