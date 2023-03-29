@@ -1,6 +1,4 @@
 package Processing;
-import io.vertx.core.Vertx;
-import io.vertx.rxjava.ext.web.Router;
 import net.bramp.ffmpeg.FFmpeg;
 import net.bramp.ffmpeg.FFmpegExecutor;
 import net.bramp.ffmpeg.FFprobe;
@@ -11,14 +9,14 @@ import java.io.IOException;
 public enum VideoCompress {
     INSTANCE;
 //Send path here. Can send database path or File server. File server makes sense. Database will contain the address of the videos
-    public void compressFFMPEG(String videoinput, String id) throws IOException {
-        String inputfile="input.mp4";
-        String path= "/Users/ritwikgoel/Downloads/outputs/"+videoinput;
+    public void compressFFMPEG(String videoinput) throws IOException {
+        String path= "/Users/ritwikgoel/Downloads/"+videoinput;
         System.out.println(path);
         FFmpeg ffmpeg = new FFmpeg("/opt/homebrew/bin/ffmpeg");//path manually
         FFprobe ffprobe = new FFprobe("/opt/homebrew/bin/ffprobe");//manual path
         //Changing the file name in accordance with input name + ID of the USER
-        String outputName="/Users/ritwikgoel/Documents/Capstone/FileSystem/"+"ffmpeg_"+inputfile+"_"+"1"+".mp4";//Add the ID name
+        //String outputName="/Users/ritwikgoel/Documents/Capstone/FileSystem/"+"ffmpeg_"+videoinput+"_"+".mp4";//Add the ID name
+        String outputName="/Users/ritwikgoel/Documents/Capstone/FileSystem/"+"FFMPEG_"+videoinput+"_"+".mp4";//Add the ID name
         FFmpegBuilder builder = new FFmpegBuilder()
                 .setInput(path)
                 .overrideOutputFiles(true)

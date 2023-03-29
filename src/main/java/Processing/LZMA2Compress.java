@@ -17,7 +17,8 @@ public enum LZMA2Compress {
     public void Lzma2Compression(String videoinput) throws IOException {
         String path= "/Users/ritwikgoel/Downloads/"+videoinput;
         System.out.println(path );
-        String outputName="/Users/ritwikgoel/Documents/Capstone/FileSystem/"+"LZMA_"+videoinput+"_"+".xz";//Add the ID name
+        System.out.println("LZMA RUN AFTER RECHECKING");
+        String outputName="/Users/ritwikgoel/Documents/Capstone/FileSystem/"+"LZMA_"+videoinput+".xz";//Add the ID name
         FileInputStream inFile = new FileInputStream(path);
         FileOutputStream outfile = new FileOutputStream(outputName);
         LZMA2Options options = new LZMA2Options();

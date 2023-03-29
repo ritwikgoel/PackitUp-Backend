@@ -14,12 +14,11 @@ public class HttpRouter extends AbstractVerticle {
             event.response().end("Ok");
         });
         //localhost:8080/ffmpeg/input.mp4/1
-        router.post("/ffmpeg/:inputfilename/:id").handler(event->{
+        router.post("/ffmpeg/:inputfilename").handler(event->{
             String inputfilename = event.pathParam("inputfilename");
-            String id = event.pathParam("id");
             HttpServerResponse response= event.response();
             try {
-                VideoCompress.INSTANCE.compressFFMPEG(inputfilename,id); //Sending the input of the file; Can also send the ID here only
+                VideoCompress.INSTANCE.compressFFMPEG(inputfilename); //Sending the input of the file; Can also send the ID here only
                 event.response().end(" FFMPEF Video compressing done");
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -41,6 +40,8 @@ public class HttpRouter extends AbstractVerticle {
         //Do Decompression later
         //Do Decompression later
         //Do Decompression later
+
+        //Post request for
 
         router.post("/upload/:path").handler(event->{
             String path = event.pathParam("path");
