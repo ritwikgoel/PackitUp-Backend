@@ -43,20 +43,15 @@ public class HttpRouter extends AbstractVerticle {
 
         //Post request for
 
-        router.post("/upload/:path").handler(event->{
-            String path = event.pathParam("path");
-            System.out.println(path);
+        router.post("/upload/").handler(event->{
             HttpServerResponse response= event.response();
             try {
-                //LZMA2Compress.INSTANCE.Lzma2Compression();
-                //VideoCompress.INSTANCE.compressFFMPEG("input.mp4");
-                //LZMA2Decompress.INSTANCE.Lzma2Decompression();
                 SnappyBzip2.INSTANCE.Compress();
-                HuffmanTextFles.INSTANCE.HuffmanTextFlesRunner();
+                //HuffmanTextFles.INSTANCE.HuffmanTextFlesRunner();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            VideoCompress.INSTANCE.decider("this.mp3");
+            //VideoCompress.INSTANCE.decider("this.mp3");
             event.response().end("Uploading with the link");
         });
         vertx.createHttpServer().requestHandler(router::accept).listen(8080);
