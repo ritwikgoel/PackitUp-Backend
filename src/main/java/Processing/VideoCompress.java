@@ -16,7 +16,7 @@ public enum VideoCompress {
         FFprobe ffprobe = new FFprobe("/opt/homebrew/bin/ffprobe");//manual path
         //Changing the file name in accordance with input name + ID of the USER
         //String outputName="/Users/ritwikgoel/Documents/Capstone/FileSystem/"+"ffmpeg_"+videoinput+"_"+".mp4";//Add the ID name
-        String outputName="/Users/ritwikgoel/Documents/Capstone/FileSystem/"+"FFMPEG_"+videoinput+"_"+".mp4";//Add the ID name
+        String outputName="/Users/ritwikgoel/Documents/Capstone/FileSystem/"+videoinput+"_FFMPEG_"+".mp4";//Add the ID name
         FFmpegBuilder builder = new FFmpegBuilder()
                 .setInput(path)
                 .overrideOutputFiles(true)

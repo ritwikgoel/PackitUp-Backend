@@ -28,7 +28,7 @@ public enum SnappyBzip2
             myReader.close();
             System.out.println(finalData); //working
             compressed = Snappy.compress(finalData.getBytes("UTF-8"));
-            String outputName="/Users/ritwikgoel/Documents/Capstone/FileSystem/"+"LZ77_"+inputtext+"_"+".txt";//Add the ID name
+            String outputName="/Users/ritwikgoel/Documents/Capstone/FileSystem/"+inputtext+"_LZ77_"+"_"+".txt";//Add the ID name
             File outputFile = new File(outputName);
 
             Files.write(outputFile.toPath(), compressed);
