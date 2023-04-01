@@ -43,4 +43,15 @@ public enum SnappyBzip2
 //        System.out.println("This is a SnappyBzip2::");
 //        System.out.println(result);
     }
+
+
+
+    public void Decompress(String input){
+        //open a file and add it to a byte stream and then pass it to this function
+        //THis is for uncompressing the data
+//        byte[] uncompressed = Snappy.uncompress(compressed);
+//        String result = new String(uncompressed, "UTF-8");
+//        System.out.println("This is a SnappyBzip2::");
+//        System.out.println(result);
+    }
 }

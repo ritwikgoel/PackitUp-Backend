@@ -32,10 +32,22 @@ public class HttpRouter extends AbstractVerticle {
             HttpServerResponse response= event.response();
             //                VideoCompress.INSTANCE.compressFFMPEG(inputfilename); //Sending the input of the file; Can also send the ID here only
             System.out.println("This is working on the donwloads post request");
+            if(inputfilename.contains("LZMA")){
+                System.out.println("It contains LZMA");
+                try {
+                    LZMA2Decompress.INSTANCE.Lzma2Decompression(inputfilename);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+            } else if(inputfilename.contains("LZ77")){
+                System.out.println("It contains LZ77");
+            }
+            else if(inputfilename.contains("FFMPEG")){
+                System.out.println("It contains FFMPEG");
+            }
             event.response().end(" Downloading done above");
         });
-
-
         //localhost:8080/lzma/input.mp4/1
         router.post("/lzma/:inputfilename").handler(event->{
             //This is working

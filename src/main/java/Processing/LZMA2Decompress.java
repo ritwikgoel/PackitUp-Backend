@@ -9,9 +9,15 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 public enum LZMA2Decompress {
     INSTANCE;
-    public void Lzma2Decompression() throws IOException {
-        String from ="outputforlzma.xz";
-        String to = "finalforLZMADecompress.mp4";
+    public void Lzma2Decompression(String input) throws IOException {
+        String from ="/Users/ritwikgoel/Documents/Capstone/FileSystem/"+input;
+        String strNew = input.replace("_", "");
+
+        String strNew2 = strNew.replace("LZMA", "");
+        String strNew3 = strNew2.replace(".xz", "");
+        String strNew4 = strNew3.replace("PACKITUP", "DECOMPRESSED_");
+
+        String to = "/Users/ritwikgoel/Downloads/"+strNew4;
         try (FileInputStream fileStream = new FileInputStream(from);
              XZInputStream xzStream = new XZInputStream(fileStream, BasicArrayCache.getInstance())) {
 
