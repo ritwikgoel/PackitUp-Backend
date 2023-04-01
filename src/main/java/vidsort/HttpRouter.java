@@ -24,6 +24,18 @@ public class HttpRouter extends AbstractVerticle {
                 throw new RuntimeException(e);
             }
         });
+
+
+        router.post("/download/:inputfilename").handler(event->{
+            String inputfilename = event.pathParam("inputfilename");
+            System.out.println(inputfilename);
+            HttpServerResponse response= event.response();
+            //                VideoCompress.INSTANCE.compressFFMPEG(inputfilename); //Sending the input of the file; Can also send the ID here only
+            System.out.println("This is working on the donwloads post request");
+            event.response().end(" Downloading done above");
+        });
+
+
         //localhost:8080/lzma/input.mp4/1
         router.post("/lzma/:inputfilename").handler(event->{
             //This is working
