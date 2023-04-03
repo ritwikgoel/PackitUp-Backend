@@ -42,6 +42,12 @@ public class HttpRouter extends AbstractVerticle {
 
             } else if(inputfilename.contains("LZ77")){
                 System.out.println("It contains LZ77");
+                try {
+                    System.out.println(inputfilename);
+                    SnappyBzip2.INSTANCE.Decompress(inputfilename);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
             }
             else if(inputfilename.contains("FFMPEG")){
                 System.out.println("It contains FFMPEG");
