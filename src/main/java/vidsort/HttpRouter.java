@@ -4,6 +4,9 @@ import io.vertx.core.AbstractVerticle;
 import io.vertx.core.http.HttpServerResponse;
 import io.vertx.ext.web.Router;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 public class HttpRouter extends AbstractVerticle {
     @Override
     public void start() {
@@ -51,6 +54,13 @@ public class HttpRouter extends AbstractVerticle {
             }
             else if(inputfilename.contains("FFMPEG")){
                 System.out.println("It contains FFMPEG");
+//                try {
+//                    String path="/Users/ritwikgoel/Documents/Capstone/FileSystemVideo/" + "DECOMPRESSED_" + inputfilename;
+//                    //Files.copy(Paths.get(path.substring(0,path.length() -12)), Paths.get("/Users/ritwikgoel/Downloads/"));
+//                } catch (IOException e) {
+//                    throw new RuntimeException(e);
+//                }
+
             }
             event.response().end(" Downloading done above");
         });

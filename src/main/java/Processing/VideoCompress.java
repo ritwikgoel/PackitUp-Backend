@@ -4,14 +4,19 @@ import net.bramp.ffmpeg.FFmpegExecutor;
 import net.bramp.ffmpeg.FFprobe;
 import net.bramp.ffmpeg.builder.FFmpegBuilder;
 
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public enum VideoCompress {
     INSTANCE;
+
+
 //Send path here. Can send database path or File server. File server makes sense. Database will contain the address of the videos
     public void compressFFMPEG(String videoinput) throws IOException {
         String path= "/Users/ritwikgoel/Downloads/"+videoinput;
         System.out.println(path);
+        Files.copy(Paths.get(path), Paths.get("/Users/ritwikgoel/Documents/Capstone/FileSystemVideo/" + "DECOMPRESSED_"+videoinput));
         FFmpeg ffmpeg = new FFmpeg("/opt/homebrew/bin/ffmpeg");//path manually
         FFprobe ffprobe = new FFprobe("/opt/homebrew/bin/ffprobe");//manual path
         //Changing the file name in accordance with input name + ID of the USER
