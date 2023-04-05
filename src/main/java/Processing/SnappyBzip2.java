@@ -4,6 +4,7 @@ import org.xerial.snappy.Snappy;
 import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 public enum SnappyBzip2 {
@@ -27,7 +28,13 @@ public enum SnappyBzip2 {
             myReader.close();
             System.out.println(finalData); //working
             compressed = Snappy.compress(finalData.getBytes("UTF-8"));
-            String outputName = "/Users/ritwikgoel/Documents/Capstone/FileSystem/" + inputtext + "_LZ77_" + "_" + ".txt";//Add the ID name
+            long bytes = Files.size(Paths.get(path));
+            System.out.println(bytes/1024);
+            long kb= (long) ((bytes/1024)*0.62);
+            String outputName="/Users/ritwikgoel/Documents/Capstone/FileSystem/"+inputtext+"_LZ77("+kb+"kb)_"+".txt";//Add the ID name
+
+
+           // String outputName = "/Users/ritwikgoel/Documents/Capstone/FileSystem/" + inputtext + "_LZ77_" + "_" + ".txt";//Add the ID name
             File outputFile = new File(outputName);
 
             Files.write(outputFile.toPath(), compressed);

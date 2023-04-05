@@ -8,6 +8,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public enum LZMA2Compress {
     INSTANCE;
@@ -18,7 +20,10 @@ public enum LZMA2Compress {
         String path= "/Users/ritwikgoel/Downloads/"+videoinput;
         System.out.println(path );
         System.out.println("LZMA RUN AFTER RECHECKING");
-        String outputName="/Users/ritwikgoel/Documents/Capstone/FileSystem/"+videoinput+"_LZMA_"+".xz";//Add the ID name
+        long bytes = Files.size(Paths.get(path));
+        System.out.println(bytes/1024);
+        long kb= (long) ((bytes/1024)*0.62);
+        String outputName="/Users/ritwikgoel/Documents/Capstone/FileSystem/"+videoinput+"_LZMA("+kb+"kb)_"+".xz";//Add the ID name
         FileInputStream inFile = new FileInputStream(path);
         FileOutputStream outfile = new FileOutputStream(outputName);
         LZMA2Options options = new LZMA2Options();
