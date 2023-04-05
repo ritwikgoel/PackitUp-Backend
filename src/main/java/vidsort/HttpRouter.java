@@ -1,4 +1,5 @@
 package vidsort;
+import Database.MongoConn;
 import Processing.*;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.http.HttpServerResponse;
@@ -21,13 +22,15 @@ public class HttpRouter extends AbstractVerticle {
             String inputfilename = event.pathParam("inputfilename");
             HttpServerResponse response= event.response();
             try {
-                VideoCompress.INSTANCE.compressFFMPEG(inputfilename); //Sending the input of the file; Can also send the ID here only
+                VideoCompress.INSTANCE.compressFFMPEG(inputfilename);
+                //Sending the input of the file; Can also send the ID here only
+                        MongoConn mongoConn= new MongoConn();//Manually start the database to run
+        mongoConn.makeConnection(inputfilename);
                 event.response().end(" FFMPEF Video compressing done");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         });
-
 
         router.post("/download/:inputfilename").handler(event->{
             String inputfilename = event.pathParam("inputfilename");
@@ -47,7 +50,8 @@ public class HttpRouter extends AbstractVerticle {
                 System.out.println("It contains LZ77");
                 try {
                     System.out.println(inputfilename);
-                    SnappyBzip2.INSTANCE.Decompress(inputfilename);
+                    //SnappyBzip2.INSTANCE.Decompress(inputfilename);
+
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
@@ -71,6 +75,8 @@ public class HttpRouter extends AbstractVerticle {
             HttpServerResponse response= event.response();
             try {
                 LZMA2Compress.INSTANCE.Lzma2Compression(inputfilename);
+                MongoConn mongoConn= new MongoConn();//Manually start the database to run
+                mongoConn.makeConnection(inputfilename);
                 event.response().end("LZMA File compressing done");
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -89,6 +95,8 @@ public class HttpRouter extends AbstractVerticle {
             HttpServerResponse response= event.response();
             try {
                 SnappyBzip2.INSTANCE.Compress(inputfilename);
+                MongoConn mongoConn= new MongoConn();//Manually start the database to run
+                mongoConn.makeConnection(inputfilename);
                 event.response().end("LZ77 File compressing done");
             } catch (IOException e) {
                 throw new RuntimeException(e);
