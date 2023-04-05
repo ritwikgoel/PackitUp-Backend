@@ -35,7 +35,7 @@ public class MongoConn {
             MongoDatabase mongoDatabase= mongoClient.getDatabase("VDC");
             MongoCollection mongoCollection=mongoDatabase.getCollection("masterData");
             Document document= new Document("location","path");
-            document.append("location",path);
+            document.append("location","/Users/ritwikgoel/Documents/Capstone/FileSystem/"+path);
             mongoCollection.insertOne(document);
             System.out.println(mongoCollection);
 
